@@ -8,9 +8,9 @@ import matplotlib.pyplot as plt
 import time
 import os
 
-# =============================================================================
+# 
 # 1. CONFIGURATION
-# =============================================================================
+# 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 DATA_PATH = "data_img"
 MAX_IMAGES_PER_CLASS = 100
@@ -29,9 +29,9 @@ print(f"Epoques : {EPOCHS}")
 print("="*70 + "\n")
 
 
-# =============================================================================
+# 
 # 2. TRANSFORMATIONS
-# =============================================================================
+# 
 
 # Sans augmentation (baseline)
 transform_baseline = transforms.Compose([
@@ -49,9 +49,9 @@ transform_flip = transforms.Compose([
 ])
 
 
-# =============================================================================
+# 
 # 3. CHARGEMENT DES DONNEES
-# =============================================================================
+# 
 
 def create_subset_dataset(data_path, transform, max_per_class):
     dataset = datasets.ImageFolder(root=data_path, transform=transform)
@@ -88,9 +88,9 @@ class SubsetDataset(Dataset):
         return self.images[idx], self.labels[idx]
 
 
-# =============================================================================
+# 
 # 4. MODELE CNN
-# =============================================================================
+# 
 
 class CNN_Animals(nn.Module):
     def __init__(self, num_classes=10):
@@ -114,9 +114,9 @@ class CNN_Animals(nn.Module):
         return x
 
 
-# =============================================================================
+# 
 # 5. ENTRAINEMENT ET EVALUATION
-# =============================================================================
+# 
 
 def train_epoch(loader, model, loss_fn, optimizer):
     model.train()
@@ -209,9 +209,9 @@ def train_and_evaluate(method_name, transform):
     return history, elapsed_time, test_acc
 
 
-# =============================================================================
+# 
 # 6. COMPARAISON ET VISUALISATION
-# =============================================================================
+# 
 
 def plot_comparison(baseline_history, flip_history, baseline_acc, flip_acc):
     fig, axes = plt.subplots(1, 3, figsize=(18, 5))
@@ -275,9 +275,9 @@ def compare_methods():
     }
 
 
-# =============================================================================
+# 
 # 7. LANCEMENT
-# =============================================================================
+# 
 
 if __name__ == "__main__":
     if not os.path.exists(DATA_PATH):
