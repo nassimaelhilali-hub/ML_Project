@@ -13,9 +13,9 @@ import os
 # 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 DATA_PATH = "data_img"
-MAX_IMAGES_PER_CLASS = 100
+MAX_IMAGES_PER_CLASS = 2000
 BATCH_SIZE = 16
-EPOCHS = 3
+EPOCHS = 20
 LEARNING_RATE = 1e-3
 NUM_CLASSES = 10
 IMG_SIZE = 128
